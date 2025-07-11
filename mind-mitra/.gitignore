@@ -10,4 +10,4 @@ frontend/dist/
 
 serviceAccount.json
 
-chatbot.js
+/Frontend/src/chatbot.js
