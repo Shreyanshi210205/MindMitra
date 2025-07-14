@@ -19,6 +19,10 @@ function Home() {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [name,setName]=useState('');
+  const [email,setEmail]=useState('')
+  const [feedback,setFeedback]=useState('')
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -42,6 +46,33 @@ function Home() {
     };
     fetchArticles();
   }, []);
+
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await fetch('http://localhost:5000/api/send-feedback', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, feedback }),
+    });
+
+    if (res.ok) {
+      alert('Feedback sent!');
+      setName('');
+      setEmail('');
+      setFeedback('');
+    } else {
+      alert('Failed to send feedback');
+    }
+  } catch (error) {
+    console.error('Error sending feedback:', error);
+    alert('Something went wrong');
+  }
+};
+
 
   return (
     <div className="scroll-smooth">
@@ -289,7 +320,7 @@ function Home() {
 
   {/* Form Container */}
   <div className="relative z-10 m-auto w-full max-w-2xl bg-white/90 backdrop-blur-lg rounded-xl shadow-2xl border border-purple-300">
-    <form className="flex flex-col items-stretch justify-center p-8" action="">
+    <form onSubmit={handleSubmit} className="flex flex-col items-stretch justify-center p-8" action="">
       <div className="mb-6">
         <label className="font-semibold block mb-2" htmlFor="name">Your Name</label>
         <input
@@ -297,6 +328,8 @@ function Home() {
           type="text"
           required
           placeholder="Enter your name"
+          value={name}
+          onChange={(e)=>setName(e.target.value)}
         />
       </div>
       <div className="mb-6">
@@ -306,6 +339,8 @@ function Home() {
           type="email"
           required
           placeholder="Enter your email"
+          value={email}
+          onChange={(e)=>setEmail(e.target.value)}
         />
       </div>
       <div className="mb-6">
@@ -314,6 +349,8 @@ function Home() {
           placeholder="Write your feedback"  
           className="w-full p-3 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400"
           rows={5}
+          value={feedback}
+          onChange={(e)=>setFeedback(e.target.value)}
         />
       </div>
       <button className="mx-auto bg-green-500 hover:bg-green-600 py-3 px-6 transition-colors rounded-xl text-white font-semibold shadow-md hover:shadow-lg">

@@ -7,6 +7,7 @@ import { userRoutes } from "./routes/userRoutes.js";
 import { rssRoutes } from "./routes/rssRoutes.js";
 import {moodRoutes} from "./routes/moodRoutes.js"
 import { journalRoutes } from "./routes/journalRoutes.js";
+import { emailRoutes } from "./routes/emailRoutes.js";
 
 dotenv.config()
 connectDB()
@@ -24,6 +25,7 @@ app.use('/api',userRoutes)
 app.use('/api/articles',rssRoutes)
 app.use('/api',moodRoutes)
 app.use('/api',journalRoutes)
+app.use('/api',emailRoutes)
 
 app.get('/',(req,res)=>{
     res.send("Backend is running")

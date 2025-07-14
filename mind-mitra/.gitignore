@@ -11,3 +11,5 @@ frontend/dist/
 serviceAccount.json
 
 /Frontend/src/chatbot.js
+
+/Backend/password.js
