@@ -41,11 +41,11 @@ export const google=async(req,res)=>{
 
   try {
     const decodedToken = await admin.auth().verifyIdToken(idToken);
-    const uid = decodedToken.uid;
+    const userId = decodedToken.uid;
     const userExists = await User.findOne({ email: decodedToken.email });
     if(!userExists) await User.create({email:decodedToken.email})
 
-    res.json({ uid, email: decodedToken.email, name: decodedToken.name });
+    res.json({ userId, email: decodedToken.email, name: decodedToken.name });
   } catch (err) {
     console.error('Token verification failed:', err);
     res.status(401).json({ error: 'Unauthorized' });

@@ -7,6 +7,7 @@ export const AuthProvider = (props) => {
   const [user, setUser] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [googleLoggedin,setGoogleLoggedin]=useState(false);
+  const [token,setToken]=useState('')
 
   const auth = getAuth();
 
@@ -15,6 +16,7 @@ export const AuthProvider = (props) => {
       onAuthStateChanged(auth, async (firebaseUser) => {
         if (firebaseUser) {
           const token = await firebaseUser.getIdToken();
+          setToken(token)
 
           try {
             const res = await fetch("http://localhost:5000/api/google-login", {
@@ -65,7 +67,7 @@ export const AuthProvider = (props) => {
   }, [auth]);
 
   return (
-    <AuthContext.Provider value={{ user, loggedIn, setLoggedIn,googleLoggedin,setGoogleLoggedin }}>
+    <AuthContext.Provider value={{token, user, loggedIn, setLoggedIn,googleLoggedin,setGoogleLoggedin }}>
       {props.children}
     </AuthContext.Provider>
   );

@@ -8,7 +8,6 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { useGSAP } from '@gsap/react';
 import Footer from './components/Footer';
 
-
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, useGSAP);
 const Layout = () => {
   return (
