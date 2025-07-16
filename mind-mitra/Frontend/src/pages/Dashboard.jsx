@@ -20,6 +20,9 @@ function Dashboard() {
   const [loading,setLoading]=useState(true)
   const [summary,setSummary]=useState({mood:{},journal:{}})
 
+  const [weekMood, setWeekMood] = useState({});
+
+
   useEffect(()=>{
     const fetchSummary=async()=>{
       const res=await fetch("http://localhost:5000/api/summary",{
@@ -28,12 +31,23 @@ function Dashboard() {
         },
         
       })
-      const data=res.json();
+      const data=await res.json();
       setSummary(data)
       setLoading(false)
     }
-    if(loggedIn || googleLoggedin)
+    const fetchWeekMood = async () => {
+  const res = await fetch("http://localhost:5000/api/week-mood", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await res.json();
+  setWeekMood(data.weekMood);
+};
+
+    if(loggedIn || googleLoggedin){
     fetchSummary()
+  fetchWeekMood()}
     
   },[loggedIn,googleLoggedin,token])
 
@@ -155,11 +169,14 @@ function Dashboard() {
                   <h3 className="text-xl font-semibold mb-2">Mood Trend (Last Week)</h3>
                   <div className="flex justify-between mt-4">
                     {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => (
-                      <div key={day} className="flex flex-col items-center">
-                        <div className="w-8 h-8 rounded-full bg-gray-400"></div>
-                        <span className="text-sm mt-1">{day}</span>
-                      </div>
-                    ))}
+  <div key={day} className="flex flex-col items-center">
+    <div className="w-10 h-10 text-xl flex items-center justify-center rounded-full bg-green-100 border">
+      {weekMood[day] || 'N/A'}
+    </div>
+    <span className="text-sm mt-1">{day}</span>
+  </div>
+))}
+
                   </div>
                 </div>
               </div>

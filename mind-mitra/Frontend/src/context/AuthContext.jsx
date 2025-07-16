@@ -42,6 +42,8 @@ export const AuthProvider = (props) => {
     const checkManualAuth = async () => {
       const token = localStorage.getItem("token");
       if (!token) return;
+      else       setToken(token)
+
 
       try {
         const res = await fetch("http://localhost:5000/api/check-auth", {
