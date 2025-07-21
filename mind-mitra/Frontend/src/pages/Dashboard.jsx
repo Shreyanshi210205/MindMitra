@@ -8,6 +8,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 import { MoodPieChart } from '../components/MoodPieChart.jsx';
 import { JournalBarChart } from '../components/JournalBarChart.jsx';
+import MoodTab from '../components/MoodTab.jsx';
+import JournalTab from '../components/JournalTab.jsx';
+import StatsTab from '../components/StatsTab.jsx';
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -166,7 +169,7 @@ function Dashboard() {
       <JournalBarChart journalSummary={summary.journal} />
     </div>
                 <div className="bg-white rounded-xl p-6 shadow-md md:col-span-2">
-                  <h3 className="text-xl font-semibold mb-2">Mood Trend (Last Week)</h3>
+                  <h3 className="text-xl font-semibold mb-2">Mood Trend (Current Week)</h3>
                   <div className="flex justify-between mt-4">
                     {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => (
   <div key={day} className="flex flex-col items-center">
@@ -184,45 +187,15 @@ function Dashboard() {
           )}
 
           {activeTab === 'moods' && (
-            <motion.div
-              key="moods"
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={tabVariants}
-              transition={{ duration: 0.4 }}
-            >
-              <h2 className="text-3xl font-bold mb-6 text-blue-800">Your Moods</h2>
-              <p>Coming soon: Mood tracking view...</p>
-            </motion.div>
+            <MoodTab></MoodTab>
           )}
 
           {activeTab === 'journals' && (
-            <motion.div
-              key="journals"
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={tabVariants}
-              transition={{ duration: 0.4 }}
-            >
-              <h2 className="text-3xl font-bold mb-6 text-purple-800">Your Journals</h2>
-              <p>Coming soon: Journal entries and insights...</p>
-            </motion.div>
+            <JournalTab></JournalTab>
           )}
 
           {activeTab === 'stats' && (
-            <motion.div
-              key="stats"
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={tabVariants}
-              transition={{ duration: 0.4 }}
-            >
-              <h2 className="text-3xl font-bold mb-6 text-green-800">Statistics</h2>
-              <p>Coming soon: Charts and usage analytics...</p>
-            </motion.div>
+            <StatsTab></StatsTab>
           )}
         </AnimatePresence>
       </main>

@@ -5,7 +5,6 @@ import { Mood } from "../models/Mood.js"
 export const getSummary=async(req,res)=>{
     try {
         const userId=req.userId
-console.log('Requested summary for user:', userId);
 
         const moodEntries=await Mood.find({userId})
         const journalEntries=await Journal.find({userId})
@@ -67,11 +66,10 @@ export const getWeekMood = async (req, res) => {
     const userId = req.userId;
 
     const today = new Date();
-    const currentDay = today.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+    const currentDay = today.getDay(); 
 
-    // Get Monday of current week
     const monday = new Date(today);
-    const diffToMonday = (currentDay + 6) % 7; // if today is Monday, 0; if Sunday, 6
+    const diffToMonday = (currentDay + 6) % 7; 
     monday.setDate(today.getDate() - diffToMonday);
     monday.setHours(0, 0, 0, 0);
 
@@ -87,18 +85,16 @@ const moods = allMoods.filter(entry => {
 });
 
 
-    // Prepare map: day name -> mood emoji
     const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     const moodMap = {};
 
-    // Default all to 'N/A'
     daysOfWeek.forEach((day) => {
       moodMap[day] = 'N/A';
     });
 
     moods.forEach((entry) => {
       const date = new Date(entry.date);
-      const dayIndex = (date.getDay() + 6) % 7; // Adjust so Monday = 0, Sunday = 6
+      const dayIndex = (date.getDay() + 6) % 7; 
       const dayName = daysOfWeek[dayIndex];
       moodMap[dayName] = entry.mood?.emoji || '❌';
     });
@@ -109,3 +105,77 @@ const moods = allMoods.filter(entry => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+export const getMoodDays=async(req,res)=>{
+  try {
+    const moods=await Mood.find({userId:req.params.userId})
+    res.json(moods)
+  } catch (error) {
+    res.status(500).json({message:"Server error"})
+  }
+
+}
+
+export const getMoodTrend=async(req,res)=>{
+  try {
+    const moods=await Mood.find({userId:req.params.userId}).sort({date:1})
+    res.json(moods)
+  } catch (error) {
+    res.status(500).json({message:"Server error"})
+  }
+}
+
+export const getJournalDays=async(req,res)=>{
+  try{
+    const journals=await Journal.find({userId:req.params.userId}).sort({date:-1})
+    if(journals.length==0){
+      return res.json({
+        count:0,
+        lastEntry:null,
+        streak:0,
+        totalWords:0
+      })
+    }
+
+    const uniqueDays=new Set(journals.map(journal=>new Date(journal.date).toDateString()))
+
+    const lastEntry=journals[0]
+    const snippet=lastEntry.journal.slice(0,80)
+
+    const totalWords = journals.reduce((acc, journal) => acc + journal.journal.trim().split(/\s+/).length, 0);
+
+    let streak = 0;
+    let current = new Date();
+    current.setHours(0, 0, 0, 0);
+
+    const journaledDays = new Set(journals.map(e => new Date(e.date).toDateString()));
+
+    while (journaledDays.has(current.toDateString())) {
+      streak++;
+      current.setDate(current.getDate() - 1);
+    }
+
+    res.json({
+      count: uniqueDays.size,
+      lastEntry: {
+        date: lastEntry.date,
+        snippet
+      },
+      streak,
+      totalWords
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+export const getJournalEntries=async(req,res)=>{
+ try {
+    const journals=await Journal.find({userId:req.params.userId}).sort({date:1})
+    res.json(journals)
+  } catch (error) {
+    res.status(500).json({message:"Server error"})
+  }
+}
