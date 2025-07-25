@@ -52,28 +52,43 @@ function Signup() {
       }
     }
   
-    const handleGoogleLogin=async()=>{
-      try{
-        const result=await signinWithGoogle()
-        const token=await result.user.getIdToken()
-        const res=await fetch("http://localhost:5000/api/google-login",{
-          method:"POST",
-          headers:{
-            "Content-Type": "application/json",
-            Authorization:`Bearer ${token}`
-          },
-          body:JSON.stringify({token})
-        })
-        await res.json()
-        setGoogleLoggedin(true)
-        navigate('/')
-        toast.success('Logged in successfully')
-      }
-      catch(err){
-        toast.error("Login failed")
-        console.error('Error:',err)
-      }
-      }
+    const handleGoogleLogin = async () => {
+  try {
+    console.log("Starting Google Sign-in...");
+    const result = await signinWithGoogle();
+
+    const token = await result.getIdToken();
+
+    const res = await fetch("http://localhost:5000/api/google-login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ token }),
+    });
+
+
+    let data = {};
+    try {
+      data = await res.json();
+    } catch (jsonErr) {
+      toast.error("Invalid response from server");
+      return;
+    }
+
+    if (!res.ok) {
+      toast.error(data.error || "Google login failed");
+      return;
+    }
+
+    setGoogleLoggedin(true);
+    toast.success(data.message || "Logged in successfully");
+    navigate("/");
+  } catch (err) {
+    toast.error("Login failed");
+  }
+};
   return (
     <div className='scroll-smooth'>
       <div className="relative w-full h-screen">

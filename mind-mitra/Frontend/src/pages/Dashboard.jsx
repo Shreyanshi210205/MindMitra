@@ -23,6 +23,8 @@ function Dashboard() {
   const [loading,setLoading]=useState(true)
   const [summary,setSummary]=useState({mood:{},journal:{}})
 
+  const [showLogout,setShowLogout]=useState(false);
+
   const [weekMood, setWeekMood] = useState({});
 
 
@@ -55,6 +57,7 @@ function Dashboard() {
   },[loggedIn,googleLoggedin,token])
 
   const handleLogout = () => {
+    
     if (loggedIn) {
       localStorage.removeItem('token');
       setLoggedIn(false);
@@ -127,7 +130,7 @@ function Dashboard() {
         </div>
 
         <button
-          onClick={handleLogout}
+          onClick={()=>setShowLogout(true)}
           className="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md mt-10"
         >
           <FaSignOutAlt />
@@ -199,6 +202,19 @@ function Dashboard() {
           )}
         </AnimatePresence>
       </main>
+      {showLogout && (<div className='flex items-center justify-center fixed inset-0 z-50 bg-white/60'>
+        <div className='flex flex-col py-3 px-8 rounded-md shadow-xl  backdrop-blur-lg  max-w-xl m-auto bg-pink-300/70 '>
+          
+            <p className='font-bold px-5 py-2'>Do you want to logout?</p>
+            <div className='flex flex-row space-x-2 px-3 py-2 '>
+              <button className='bg-green-200 px-2 rounded-xl cursor-pointer' onClick={handleLogout}>Yes</button>
+              <button  className='bg-red-700 px-2 rounded-xl cursor-pointer text-white'
+              onClick={()=>setShowLogout(false)}>No</button>
+            </div>
+          
+        </div>
+        </div>
+      )}
     </div>
   );
 }

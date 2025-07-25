@@ -54,10 +54,8 @@ const handleGoogleLogin = async () => {
   try {
     console.log("Starting Google Sign-in...");
     const result = await signinWithGoogle();
-    console.log("Google sign-in result:", result);
 
     const token = await result.getIdToken();
-    console.log("Firebase token:", token);
 
     const res = await fetch("http://localhost:5000/api/google-login", {
       method: "POST",
