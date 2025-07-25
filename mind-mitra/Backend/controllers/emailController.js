@@ -1,13 +1,13 @@
-import { pass } from "../password.js";
 import nodemailer from 'nodemailer';
-
+require('dotenv').config();
 
 export const sendEmail=async(req,res)=>{
+    const password=process.env.PASS;
     const transporter=nodemailer.createTransport({
         service:'gmail',
         auth:{
             user:'shreya.nshi2102@gmail.com',
-            pass:pass
+            pass:password
         }
 });
 const {name,email,feedback}=req.body;
