@@ -15,9 +15,9 @@ const ChatBot = () => {
     // e.preventDefault()
   if (input.trim() === "") return;
 
-  const newMessage = { sender: "user", text: input };
+  const newMessage = { sender: "user", text:input };
   setMessages((prev) => [...prev, newMessage]);
-  setInput("");
+  setInput(""); 
     
   const payload = {
     contents: [

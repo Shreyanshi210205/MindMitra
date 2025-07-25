@@ -103,8 +103,8 @@ function Home() {
             <p className="mt-2 text-base sm:text-lg">
               Your companion in self-care and emotional wellness.
             </p>
-            <button className="mt-4 px-6 py-3 bg-pink-600 text-black font-semibold rounded-full shadow hover:bg-pink-500 transition cursor-pointer">
-              Start Your Mental Health Journey
+            <button className="mt-4 px-6 py-3 bg-pink-600 text-black font-semibold rounded-full shadow">
+              Your Journey to Healthy Mind Starts Here!!
             </button>
           </div>
         </div>

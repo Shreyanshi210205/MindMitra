@@ -7,7 +7,6 @@ import { AuthProvider } from './context/AuthContext.jsx'
 import { FirebaseProvider } from './context/firebase.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <BrowserRouter>
     <FirebaseProvider>
     <AuthProvider>
@@ -16,6 +15,5 @@ createRoot(document.getElementById('root')).render(
     
     </AuthProvider>
     </FirebaseProvider>
-    </BrowserRouter>
-  </StrictMode>,
+    </BrowserRouter>,
 )

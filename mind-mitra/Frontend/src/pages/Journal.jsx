@@ -5,13 +5,15 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { AuthContext } from "../context/AuthContext";
 import { FirebaseContext } from "../context/firebase";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Journal = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [journalText, setJournalText] = useState("");
   const [savedEntries, setSavedEntries] = useState({});
   const [userId,setUserId]=useState(null) 
-  const {user}=useContext(AuthContext)
+  const {user,loggedIn,googleLoggedIn}=useContext(AuthContext)
   const {userGoogle}=useContext(FirebaseContext)
 
 const formatDate = (date) => {
@@ -21,7 +23,13 @@ const formatDate = (date) => {
   return `${year}-${month}-${day}`;
 };
 
+const navigate=useNavigate()
+
 useEffect(()=>{
+  if(!loggedIn && !googleLoggedIn){
+    navigate("/login")
+    toast.error('PLEASE LOGIN FIRST')
+  }
   const currentUserId = user?.uid || userGoogle?.uid;
   if (!currentUserId) return;
   else setUserId(currentUserId)

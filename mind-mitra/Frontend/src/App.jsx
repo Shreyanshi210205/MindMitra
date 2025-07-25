@@ -30,7 +30,7 @@ function App() {
     setLoading(true)
     const id=setTimeout(() => {
       setLoading(false)
-    }, 2000);
+    }, 1000);
     return ()=>{clearTimeout(id)}
   },[location])
   return (

@@ -52,7 +52,6 @@ function Navbar() {
         </NavLink>)
         }
         
-        <FaGlobe className="text-gray-700 text-xl cursor-pointer hover:text-pink-600" />
       </div>
 
       <div className="md:hidden flex items-center">

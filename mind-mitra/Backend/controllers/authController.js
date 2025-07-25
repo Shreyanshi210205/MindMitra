@@ -45,7 +45,12 @@ export const google=async(req,res)=>{
     const userExists = await User.findOne({ email: decodedToken.email });
     if(!userExists) await User.create({email:decodedToken.email})
 
-    res.json({ userId, email: decodedToken.email, name: decodedToken.name });
+    res.status(200).json({
+      message: 'Login successful',
+      userId,
+      email: decodedToken.email,
+      name: decodedToken.name,
+    });
   } catch (err) {
     console.error('Token verification failed:', err);
     res.status(401).json({ error: 'Unauthorized' });

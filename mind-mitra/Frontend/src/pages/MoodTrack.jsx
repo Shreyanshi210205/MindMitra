@@ -6,6 +6,7 @@ import "react-calendar/dist/Calendar.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { FirebaseContext } from "../context/firebase";
+import toast from "react-hot-toast";
 
 const moods = [
   { emoji: "😊", label: "Happy" },
@@ -21,6 +22,8 @@ const MoodTrack = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [savedMood,setSavedMood]=useState({});
 
+  
+
 const formatDate = (date) => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0"); 
@@ -28,14 +31,21 @@ const formatDate = (date) => {
   return `${year}-${month}-${day}`;
 };
   const navigate=useNavigate()
-  const {user}=useContext(AuthContext)
+  const {user,loggedIn,googleLoggedIn}=useContext(AuthContext)
   const {userGoogle}=useContext(FirebaseContext)
   const [userId,setUserId]=useState(null)
 
 useEffect(() => {
+  if(!loggedIn && !googleLoggedIn){
+    
+    navigate('/login')
+    toast.error('PLEASE LOGIN FIRST!!')
+    
+  }
   const currentUserId = user?.uid || userGoogle?.uid;
-  if (!currentUserId) return;
-
+  if (!currentUserId) {
+    navigate('/login')
+    return;}
   const getMoods = async () => {
     try {
       const res = await fetch(`http://localhost:5000/api/get-mood/${currentUserId}`);
