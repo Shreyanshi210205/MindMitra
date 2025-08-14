@@ -31,7 +31,7 @@ const MoodTab = () => {
     const currentUserId = user?.uid || userGoogle?.uid;
   if (!currentUserId) return;
     const getMoodDays=async()=>{
-      const res=await fetch(`http://localhost:5000/api/get-moodDays/${currentUserId}`)
+      const res=await fetch(`https://mindmitra-jhfv.onrender.com/api/get-moodDays/${currentUserId}`)
       const data=await res.json();
       let cnt=0;
       data.forEach(()=>{
@@ -50,7 +50,7 @@ const MoodTab = () => {
     const currentUserId = user?.uid || userGoogle?.uid;
   if (!currentUserId) return;
   const getMoodTrend=async()=>{
-const res=await fetch(`http://localhost:5000/api/get-moodTrend/${currentUserId}`)
+const res=await fetch(`https://mindmitra-jhfv.onrender.com/api/get-moodTrend/${currentUserId}`)
       const data=await res.json()
       
         const mapped = data.map(entry => {

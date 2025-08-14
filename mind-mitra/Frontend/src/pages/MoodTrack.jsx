@@ -48,7 +48,7 @@ useEffect(() => {
     return;}
   const getMoods = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/get-mood/${currentUserId}`);
+      const res = await fetch(`https://mindmitra-jhfv.onrender.com/api/get-mood/${currentUserId}`);
       const data = await res.json();
       const moodMap = {};
       data.forEach((element) => {
@@ -84,7 +84,7 @@ useEffect(() => {
         [key]:selectedMood
       }))
       try{
-        await fetch('http://localhost:5000/api/post-mood',{
+        await fetch('https://mindmitra-jhfv.onrender.com/api/post-mood',{
           method:'POST',
           headers:{
         'Content-Type':'application/json'

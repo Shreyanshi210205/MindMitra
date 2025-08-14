@@ -4,7 +4,6 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 const COLORS = ['#FF6384', '#36A2EB', '#FFCE56', '#00C49F', '#FF8042', '#8884d8'];
 
 export  function MoodPieChart({ moodSummary }) {
-  // Fallback in case moodSummary is undefined/null
   const safeData = moodSummary && Object.keys(moodSummary).length > 0
     ? Object.entries(moodSummary).map(([week, count]) => ({
         name: week,

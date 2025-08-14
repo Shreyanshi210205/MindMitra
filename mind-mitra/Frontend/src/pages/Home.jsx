@@ -34,7 +34,7 @@ function Home() {
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/articles/mindful");
+        const res = await fetch("https://mindmitra-jhfv.onrender.com/api/articles/mindful");
         const data = await res.json();
         setArticles(Array.isArray(data) ? data : []);
       } catch (err) {
@@ -51,7 +51,7 @@ function Home() {
   const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await fetch('http://localhost:5000/api/send-feedback', {
+    const res = await fetch('https://mindmitra-jhfv.onrender.com/api/send-feedback', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

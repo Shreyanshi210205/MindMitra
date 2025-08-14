@@ -27,7 +27,7 @@ function Login() {
     return;
   }
     try{
-    const res=await fetch('http://localhost:5000/api/login',{
+    const res=await fetch('https://mindmitra-jhfv.onrender.com/api/login',{
       method:'POST',
       headers:{
         'Content-Type':'application/json'
@@ -57,7 +57,7 @@ const handleGoogleLogin = async () => {
 
     const token = await result.getIdToken();
 
-    const res = await fetch("http://localhost:5000/api/google-login", {
+    const res = await fetch("https://mindmitra-jhfv.onrender.com/api/google-login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

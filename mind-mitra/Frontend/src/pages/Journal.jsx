@@ -34,7 +34,7 @@ useEffect(()=>{
   if (!currentUserId) return;
   else setUserId(currentUserId)
   const getJournals=async()=>{
-    const res =await fetch(`http://localhost:5000/api/get-journal/${currentUserId}`)
+    const res =await fetch(`https://mindmitra-jhfv.onrender.com/api/get-journal/${currentUserId}`)
     const journalMap={}
     const data=await res.json();
     data.forEach(element => {
@@ -70,7 +70,7 @@ if(savedEntries[formatDate(selectedDate)])
         [key]: journalText.trim(),
       }));
       try{
-        await fetch('http://localhost:5000/api/post-journal',{
+        await fetch('https://mindmitra-jhfv.onrender.com/api/post-journal',{
           method:'POST',
           headers:{
             'Content-type':'application/json'

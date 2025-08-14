@@ -30,7 +30,7 @@ function Dashboard() {
 
   useEffect(()=>{
     const fetchSummary=async()=>{
-      const res=await fetch("http://localhost:5000/api/summary",{
+      const res=await fetch("https://mindmitra-jhfv.onrender.com/api/summary",{
         headers:{
           Authorization:`Bearer ${token}`
         },
@@ -41,7 +41,7 @@ function Dashboard() {
       setLoading(false)
     }
     const fetchWeekMood = async () => {
-  const res = await fetch("http://localhost:5000/api/week-mood", {
+  const res = await fetch("https://mindmitra-jhfv.onrender.com/api/week-mood", {
     headers: {
       Authorization: `Bearer ${token}`,
     },

@@ -17,8 +17,8 @@ const StatsTab = () => {
     const fetchData = async () => {
       try {
         const [moodRes, journalRes] = await Promise.all([
-          fetch(`http://localhost:5000/api/get-moodTrend/${currentUserId}`),
-          fetch(`http://localhost:5000/api/get-journalEntries/${currentUserId}`)
+          fetch(`https://mindmitra-jhfv.onrender.com/api/get-moodTrend/${currentUserId}`),
+          fetch(`https://mindmitra-jhfv.onrender.com/api/get-journalEntries/${currentUserId}`)
         ]);
 
         const moodDataRaw = await moodRes.json();

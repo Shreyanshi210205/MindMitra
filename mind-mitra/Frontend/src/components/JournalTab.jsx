@@ -18,7 +18,7 @@ const JournalTab = () => {
 
     const fetchJournalStats = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/get-journalTrend/${currentUserId}`);
+        const res = await fetch(`https://mindmitra-jhfv.onrender.com/api/get-journalTrend/${currentUserId}`);
         const data = await res.json();
 
         setJournalCount(data.count);
