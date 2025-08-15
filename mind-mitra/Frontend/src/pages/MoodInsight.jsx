@@ -1,9 +1,6 @@
-// MoodInsights.jsx
-
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom"; 
-import { URL } from "../chatbot"; 
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from "react-markdown";
 
 const MoodInsight = () => {
   const location = useLocation();
@@ -23,8 +20,12 @@ const MoodInsight = () => {
         ],
       };
 
+      const API_KEY = import.meta.env.VITE_GEMINI_KEY;
+      const URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+
       const res = await fetch(URL, {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
@@ -38,20 +39,23 @@ const MoodInsight = () => {
 
   return (
     <div className="p-8 pt-25 max-w-3xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Your Mood: <span className="capitalize">You are {mood.label} {mood.emoji}</span></h2>
+      <h2 className="text-2xl font-bold mb-4">
+        Your Mood: <span className="capitalize">You are {mood.label} {mood.emoji}</span>
+      </h2>
 
       <div className="bg-gray-100 p-4 rounded-xl shadow-sm mb-6">
-        <h3 className="  mb-2 font-bold text-xl text-pink-700">Suggested Steps:</h3>
+        <h3 className="mb-2 font-bold text-xl text-pink-700">Suggested Steps:</h3>
         {suggestions ? (
-          <ReactMarkdown >{suggestions}</ReactMarkdown>
+          <ReactMarkdown>{suggestions}</ReactMarkdown>
         ) : (
           <p className="text-sm text-gray-400">Fetching suggestions...</p>
         )}
       </div>
-<NavLink to='/journal'>
-      <button className="bg-pink-600 text-white px-5 py-2 rounded-full hover:bg-pink-700 transition">
-        Go to Journal →
-      </button>
+
+      <NavLink to="/journal">
+        <button className="bg-pink-600 text-white px-5 py-2 rounded-full hover:bg-pink-700 transition">
+          Go to Journal →
+        </button>
       </NavLink>
     </div>
   );
