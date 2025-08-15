@@ -2,7 +2,7 @@ import React, { useState,useContext,useEffect } from 'react';
 import bgImage from '../assets/loginBG.png';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { loginSchema } from '../../../Backend/validators/authValidate'; 
+import { loginSchema } from '@shared/validators/authValidate.js'; 
 import { AuthContext } from '../context/AuthContext';
 import { FirebaseContext } from '../context/firebase';
 
