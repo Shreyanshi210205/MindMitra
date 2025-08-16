@@ -16,9 +16,14 @@ connectDB()
 const app=express();
 
 app.use(cors({
-  origin:[ 'http://localhost:5173','https://mind-mitra-one.vercel.app/'], 
+  origin: [
+    "http://localhost:5173",
+    "https://mind-mitra-one.vercel.app",
+    "https://mind-mitra-git-main-shreyanshi-srivastavas-projects.vercel.app"
+  ],
   credentials: true
 }));
+
 app.use(express.json());
 
 app.use('/api',authRoutes)
