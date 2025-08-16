@@ -1,7 +1,7 @@
 import express from "express";
 import { validate } from "../middlewares/validate.js";
 import { signup,login, google } from "../controllers/authController.js";
-import { signupSchema,loginSchema } from "../../shared/validators/authValidate.js";
+import { signupSchema,loginSchema } from "mindmitra-shared/validators/authValidate.js";
 const router =express.Router()
 
 router.post('/signup',validate(signupSchema),signup)

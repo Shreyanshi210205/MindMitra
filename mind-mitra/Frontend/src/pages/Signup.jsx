@@ -2,7 +2,7 @@ import React, {  useContext, useEffect, useState } from 'react';
 import bgImage from '../assets/loginBG.png';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { signupSchema } from '@shared/validators/authValidate.js';
+import { signupSchema } from 'mindmitra-shared/validators/authValidate.js';
 import { FirebaseContext } from '../context/firebase';
 import { AuthContext } from '../context/AuthContext';
 
