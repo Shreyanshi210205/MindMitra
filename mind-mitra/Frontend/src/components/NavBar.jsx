@@ -73,13 +73,13 @@ function Navbar() {
           <NavLink to="/" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
             Home
           </NavLink>
-          <NavLink to="/mood" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
+          <NavLink to="/mood-track" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
             Mood Tracker
           </NavLink>
           <NavLink to="/journal" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
             Journal
           </NavLink>
-          <NavLink to="/tools" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
+          <NavLink to="/mind-tools" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
             Mind Tools
           </NavLink>
           <NavLink to="/signup">
