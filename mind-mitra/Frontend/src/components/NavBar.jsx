@@ -65,30 +65,38 @@ function Navbar() {
       </div>
 
       
-      {isOpen && (
-        <div className={`absolute top-full left-0 w-full bg-[#cce7e2] flex flex-col items-start p-4 gap-4 md:hidden shadow-md
+{isOpen && (
+  <div className={`absolute top-full left-0 w-full bg-[#cce7e2] flex flex-col items-start p-4 gap-4 md:hidden shadow-md
     transition-all duration-300 ease-in-out
     ${isOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}
   `}>
-          <NavLink to="/" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
-            Home
-          </NavLink>
-          <NavLink to="/mood-track" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
-            Mood Tracker
-          </NavLink>
-          <NavLink to="/journal" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
-            Journal
-          </NavLink>
-          <NavLink to="/mind-tools" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
-            Mind Tools
-          </NavLink>
-          <NavLink to="/signup">
-          <button className="mt-2 px-4 py-1 border border-pink-600 text-pink-600 rounded-full hover:bg-pink-100 transition">
-            Login / Sign Up
-          </button>
-          </NavLink>
-        </div>
-      )}
+    <NavLink to="/" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
+      Home
+    </NavLink>
+    <NavLink to="/mood-track" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
+      Mood Tracker
+    </NavLink>
+    <NavLink to="/journal" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
+      Journal
+    </NavLink>
+    <NavLink to="/mind-tools" onClick={toggleMenu} className={({ isActive }) => `${linkStyle} ${isActive ? activeStyle : ""}`}>
+      Mind Tools
+    </NavLink>
+    {(loggedIn || googleLoggedin) ? (
+      <NavLink to="/dashboard" onClick={toggleMenu}>
+        <button className="mt-2 px-4 py-1 border border-pink-600 text-pink-600 rounded-full hover:bg-pink-100 transition">
+          Dashboard
+        </button>
+      </NavLink>
+    ) : (
+      <NavLink to="/signup" onClick={toggleMenu}>
+        <button className="mt-2 px-4 py-1 border border-pink-600 text-pink-600 rounded-full hover:bg-pink-100 transition">
+          Login / Sign Up
+        </button>
+      </NavLink>
+    )}
+  </div>
+)}
     </nav>
   );
 }
