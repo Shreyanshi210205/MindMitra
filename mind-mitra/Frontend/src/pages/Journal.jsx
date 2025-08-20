@@ -27,8 +27,10 @@ const navigate=useNavigate()
 
 useEffect(()=>{
   if(!loggedIn &&  !googleLoggedIn){
-    navigate("/login")
     toast.error('PLEASE LOGIN FIRST')
+    navigate("/login")
+    return;
+    
   }
   const currentUserId = user?.uid || userGoogle?.uid;
   if (!currentUserId) return;

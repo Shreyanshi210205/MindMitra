@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import bgImage from '../assets/loginBG.png';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FirebaseContext } from '../context/firebase';
 import { AuthContext } from '../context/AuthContext';
 
@@ -95,7 +95,7 @@ function Signup() {
       toast.success(data.message || "Signed in successfully");
       navigate("/");
     } catch (err) {
-      toast.error("Login failed");
+      toast.error("Signup failed");
     }
   };
 
@@ -135,7 +135,7 @@ function Signup() {
               Sign up with Google
             </button>
             <p className="text-sm mt-4">
-              Already signed up? <a href="/login" className="text-blue-600 text-[16px] underline cursor-pointer">Login!!</a>
+              Already signed up? <NavLink to="/login" className="text-blue-600 text-[16px] underline cursor-pointer">Login!!</NavLink>
             </p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import bgImage from '../assets/loginBG.png';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { FirebaseContext } from '../context/firebase';
 
@@ -16,7 +16,6 @@ function Login() {
     if (loggedIn || googleLoggedin) navigate('/');
   }, [loggedIn, navigate, googleLoggedin]);
 
-  // Simple email and password validation
   const validateForm = ({ email, password }) => {
     if (!email || !password) {
       return "Email and password are required.";
@@ -134,7 +133,7 @@ function Login() {
               Login with Google
             </button>
             <p className="text-sm mt-4 text-center">
-              New here? <a href="/signup" className="text-blue-600 text-[16px] underline cursor-pointer">Create an account</a>
+              New here? <NavLink to='/signup'> <button className="text-blue-600 text-[16px] underline cursor-pointer">Create an account</button></NavLink>
             </p>
           </div>
         </div>

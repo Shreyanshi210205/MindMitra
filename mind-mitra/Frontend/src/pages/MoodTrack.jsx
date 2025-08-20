@@ -37,9 +37,10 @@ const formatDate = (date) => {
 
 useEffect(() => {
   if(!loggedIn && !googleLoggedIn){
-    
+        toast.error('PLEASE LOGIN FIRST!!')
+
     navigate('/login')
-    toast.error('PLEASE LOGIN FIRST!!')
+    return;
     
   }
   const currentUserId = user?.uid || userGoogle?.uid;
