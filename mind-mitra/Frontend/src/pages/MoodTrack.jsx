@@ -31,12 +31,12 @@ const formatDate = (date) => {
   return `${year}-${month}-${day}`;
 };
   const navigate=useNavigate()
-  const {user,loggedIn,googleLoggedIn}=useContext(AuthContext)
+  const {user,loggedIn,googleLoggedin}=useContext(AuthContext)
   const {userGoogle}=useContext(FirebaseContext)
   const [userId,setUserId]=useState(null)
 
 useEffect(() => {
-  if(!loggedIn && !googleLoggedIn){
+  if(!loggedIn && !googleLoggedin){
         toast.error('PLEASE LOGIN FIRST!!')
 
     navigate('/login')

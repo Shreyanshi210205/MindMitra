@@ -13,7 +13,7 @@ const Journal = () => {
   const [journalText, setJournalText] = useState("");
   const [savedEntries, setSavedEntries] = useState({});
   const [userId,setUserId]=useState(null) 
-  const {user,loggedIn,googleLoggedIn}=useContext(AuthContext)
+  const {user,loggedIn,googleLoggedin}=useContext(AuthContext)
   const {userGoogle}=useContext(FirebaseContext)
 
 const formatDate = (date) => {
@@ -26,7 +26,7 @@ const formatDate = (date) => {
 const navigate=useNavigate()
 
 useEffect(()=>{
-  if(!loggedIn &&  !googleLoggedIn){
+  if(!loggedIn &&  !googleLoggedin){
     toast.error('PLEASE LOGIN FIRST')
     navigate("/login")
     return;
