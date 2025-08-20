@@ -92,7 +92,7 @@ function Signup() {
       }
 
       setGoogleLoggedin(true);
-      toast.success(data.message || "Logged in successfully");
+      toast.success(data.message || "Signed in successfully");
       navigate("/");
     } catch (err) {
       toast.error("Login failed");

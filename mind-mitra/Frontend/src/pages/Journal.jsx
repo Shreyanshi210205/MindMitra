@@ -26,7 +26,7 @@ const formatDate = (date) => {
 const navigate=useNavigate()
 
 useEffect(()=>{
-  if(!loggedIn || !googleLoggedIn){
+  if(!loggedIn &&  !googleLoggedIn){
     navigate("/login")
     toast.error('PLEASE LOGIN FIRST')
   }
