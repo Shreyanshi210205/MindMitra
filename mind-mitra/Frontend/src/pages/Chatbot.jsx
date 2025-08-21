@@ -64,8 +64,7 @@ export default function Chatbot() {
       });
 
       const data = await res.json();
-      const botReply =
-        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      const botReply =data?.candidates?.[0]?.content?.parts?.[0]?.text ||
         "Sorry, I couldn't understand that.";
 
       setMessages((prev) => [...prev, { sender: "bot", text: botReply }]);
@@ -76,7 +75,6 @@ export default function Chatbot() {
         { sender: "bot", text: "Something went wrong. Please try again." },
       ]);
     }
-
     setInput("");
     setLoading(false);
   };
@@ -96,8 +94,9 @@ export default function Chatbot() {
             <ReactMarkdown>{msg.text}</ReactMarkdown>
           </div>
         ))}
+                <div ref={messageRef}></div>
+
         {loading && <div className="text-gray-500">Bot is typing...</div>}
-        <div ref={messageRef}></div>
       </div>
 
       <div className="flex gap-2">
