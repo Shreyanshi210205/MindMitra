@@ -304,19 +304,7 @@ function Home() {
     Feedback Form
   </h2>
 
-  <div className="absolute inset-0 z-0">
-    <DotGrid
-      dotSize={3}
-      gap={25}
-      baseColor="#5227FF"
-      activeColor="#5227FF"
-      proximity={120}
-      shockRadius={230}
-      shockStrength={5}
-      resistance={250}
-      returnDuration={1.5}
-    />
-  </div>
+ 
 
   {/* Form Container */}
   <div className="relative z-10 m-auto w-full max-w-2xl bg-white/90 backdrop-blur-lg rounded-xl shadow-2xl border border-purple-300">
