@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { FirebaseContext } from "../context/firebase";
 import toast from "react-hot-toast";
@@ -163,12 +163,12 @@ useEffect(() => {
             <p className="text-gray-700 mb-2 font-medium">
               Tracked your mood? Great! Let’s journal to understand it better. 💬
             </p>
-            <a
-              href="/journal"
+            <NavLink
+              to="/journal"
               className="text-pink-600 font-semibold underline hover:text-pink-800"
             >
               Start Journaling →
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>

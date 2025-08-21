@@ -89,26 +89,29 @@ function Home() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative w-full h-screen max-h-screen">
-        <img
-          className="h-screen w-full object-fill"
-          src={bgImage}
-          alt="Mental Health Background"
-        />
-        <div className="absolute inset-0 flex items-center px-6 sm:px-12">
-          <div className="text-left text-black max-w-xl" data-aos="fade-up">
-            <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-tight">
-              Welcome to MindMitra
-            </h1>
-            <p className="mt-2 text-base sm:text-lg">
-              Your companion in self-care and emotional wellness.
-            </p>
-            <button className="mt-4 px-6 py-3 bg-pink-600 text-black font-semibold rounded-full shadow">
-              Your Journey to Healthy Mind Starts Here!!
-            </button>
-          </div>
-        </div>
-      </div>
+<div className="relative w-full h-screen">
+  <img
+    className="absolute inset-0 w-full h-full object-cover"
+    src={bgImage}
+    alt="Mental Health Background"
+  />
+  <div className="absolute inset-0 " /> {/* Optional overlay for contrast */}
+
+  <div className="relative z-10 flex items-center px-6 sm:px-12 h-full">
+    <div className="text-left text-black max-w-xl" data-aos="fade-up">
+      <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-tight">
+        Welcome to MindMitra
+      </h1>
+      <p className="mt-2 text-base sm:text-lg">
+        Your companion in self-care and emotional wellness.
+      </p>
+      <button className="mt-4 px-6 py-3 bg-pink-600 text-white font-semibold rounded-full shadow hover:bg-pink-700 transition">
+        Your Journey to Healthy Mind Starts Here!!
+      </button>
+    </div>
+  </div>
+</div>
+
 
       {/* About Us */}
       <section className="py-10 px-12 sm:px-12 over bg-white">
