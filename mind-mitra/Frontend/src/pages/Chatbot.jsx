@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 export default function Chatbot() {
+  console.log("Gemini Key:", import.meta.env.VITE_GEMINI_KEY);
+
   const mentalHealthKeywords = [
     "anxiety","depression","stress","mental health","therapy","sad","angry","panic","help","support","anxious","fine",
     "wellbeing","counseling","mood","feeling","lonely","overwhelmed","hopeless","worry","fear","trauma",
