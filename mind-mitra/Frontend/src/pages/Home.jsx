@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import CardSwap, { Card } from "../animations/CardSwap";
-import DotGrid from '../animations/DotGrid';
 
 
 import bgImage from "../assets/homeBG.png";
