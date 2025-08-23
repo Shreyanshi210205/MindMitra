@@ -97,7 +97,7 @@ function Dashboard() {
 
       <aside
         className={`fixed top-0 left-0 h-screen z-40 bg-green-700 text-white transition-all duration-300 ease-in-out flex flex-col justify-between pl-4 pt-16
-          ${isSidebarOpen ? 'w-64' : 'w-20'} }
+          ${isSidebarOpen ? 'w-64' : 'w-20'} 
         `}
         style={{ overflowX: 'hidden' }}
       >

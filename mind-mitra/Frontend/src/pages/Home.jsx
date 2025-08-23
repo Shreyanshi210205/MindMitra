@@ -148,16 +148,16 @@ function Home() {
       </section>
 
       {/* Tools Section */}
-      <section className="py-16 px-6 sm:px-12 bg-pink-100 overflow-hidden">
+      <section className="py-30 px-6 sm:px-12 bg-pink-100 overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+          {/* Only show feature text on large screens */}
+          <div className="space-y-8 lg:block hidden">
             <h1
               data-aos="fade-up"
               className="text-5xl font-bold text-green-700"
             >
               Our Features
             </h1>
-
             <div data-aos="fade-right" data-aos-delay={100}>
               <h2 className="text-2xl font-semibold mb-1">🧠 Mood Tracker</h2>
               <p className="text-lg text-gray-700 font-semibold">
@@ -166,7 +166,6 @@ function Home() {
                 your mental well-being.
               </p>
             </div>
-
             <div data-aos="fade-right" data-aos-delay={200}>
               <h2 className="text-2xl font-semibold mb-1">📔 Journaling</h2>
               <p className="text-lg text-gray-700 font-semibold">
@@ -174,7 +173,6 @@ function Home() {
                 in a secure, distraction-free space.
               </p>
             </div>
-
             <div data-aos="fade-right" data-aos-delay={300}>
               <h2 className="text-2xl font-semibold mb-1">🛠️ Mind Tools</h2>
               <p className="text-lg text-gray-700 font-semibold">
@@ -185,66 +183,110 @@ function Home() {
             </div>
           </div>
 
+          {/* Cards: three in a single row on small screens, animation on large screens */}
           <div
             data-aos="fade-left"
             data-aos-delay={100}
             className="w-full"
             style={{ height: "600px", position: "relative" }}
           >
-            <CardSwap
-              cardDistance={60}
-              verticalDistance={60}
-              delay={3500}
-              pauseOnHover={false}
-            >
-              <Card>
-                <div className="flex flex-col items-center justify-around p-10 gap-4">
-                  <h3 className="text-xl font-bold text-green-700">
-                    🧠 Mood Tracker
-                  </h3>
-                  <img
-                    className="w-60 h-60 object-contain rounded-xl"
-                    src={mood1}
-                    alt="Mood Tracker"
-                  />
-                  <p className="text-center text-gray-700">
-                    Log your mood and see trends over time for emotional
-                    clarity.
-                  </p>
-                </div>
-              </Card>
-              <Card>
-                <div className="flex flex-col items-center justify-around p-10 gap-4">
-                  <h3 className="text-xl font-bold text-green-700">
-                    📔 Journaling
-                  </h3>
-                  <img
-                    className="w-60 h-60 object-contain rounded-xl"
-                    src={mood2}
-                    alt="Journaling"
-                  />
-                  <p className="text-center text-gray-700">
-                    Write freely and get personalized prompts to reflect better.
-                  </p>
-                </div>
-              </Card>
-              <Card>
-                <div className="flex flex-col items-center justify-around p-10 gap-4">
-                  <h3 className="text-2xl font-bold text-green-700">
-                    🛠️ Mind Tools
-                  </h3>
-                  <img
-                    className="w-60 h-60 object-contain rounded-xl"
-                    src={mood3}
-                    alt="Mind Tools"
-                  />
-                  <p className="text-center text-gray-700">
-                    Practice mindfulness with quick, helpful tools built into
-                    the app.
-                  </p>
-                </div>
-              </Card>
-            </CardSwap>
+            {/* Show three cards in a single row on small screens */}
+            <div className="flex flex-col gap-6 items-stretch justify-center lg:hidden">
+              <div className="flex flex-col items-center justify-around p-6 gap-2 bg-white rounded-xl shadow w-full">
+                <img
+                  className="w-24 h-24 object-contain rounded-xl"
+                  src={mood1}
+                  alt="Mood Tracker"
+                />
+                <h3 className="text-base font-bold text-green-700">
+                  🧠 Mood Tracker
+                </h3>
+                <p className="text-center text-gray-700 text-xs mt-2">
+                  Log your mood and see trends over time for emotional clarity.
+                </p>
+              </div>
+              <div className="flex flex-col items-center justify-around p-6 gap-2 bg-white rounded-xl shadow w-full">
+                <img
+                  className="w-24 h-24 object-contain rounded-xl"
+                  src={mood2}
+                  alt="Journaling"
+                />
+                <h3 className="text-base font-bold text-green-700">
+                  📔 Journaling
+                </h3>
+                <p className="text-center text-gray-700 text-xs mt-2">
+                  Write freely and get personalized prompts to reflect better.
+                </p>
+              </div>
+              <div className="flex flex-col items-center justify-around p-6 gap-2 bg-white rounded-xl shadow w-full">
+                <img
+                  className="w-24 h-24 object-contain rounded-xl"
+                  src={mood3}
+                  alt="Mind Tools"
+                />
+                <h3 className="text-base font-bold text-green-700">
+                  🛠️ Mind Tools
+                </h3>
+                <p className="text-center text-gray-700 text-xs mt-2">
+                  Practice mindfulness with quick, helpful tools built into the app.
+                </p>
+              </div>
+            </div>
+            {/* Show CardSwap animation on large screens */}
+            <div className="hidden lg:block h-full">
+              <CardSwap
+                cardDistance={60}
+                verticalDistance={60}
+                delay={3500}
+                pauseOnHover={false}
+              >
+                <Card>
+                  <div className="flex flex-col items-center justify-around p-10 gap-4">
+                    <h3 className="text-xl font-bold text-green-700">
+                      🧠 Mood Tracker
+                    </h3>
+                    <img
+                      className="w-60 h-60 object-contain rounded-xl"
+                      src={mood1}
+                      alt="Mood Tracker"
+                    />
+                    <p className="text-center text-gray-700">
+                      Log your mood and see trends over time for emotional clarity.
+                    </p>
+                  </div>
+                </Card>
+                <Card>
+                  <div className="flex flex-col items-center justify-around p-10 gap-4">
+                    <h3 className="text-xl font-bold text-green-700">
+                      📔 Journaling
+                    </h3>
+                    <img
+                      className="w-60 h-60 object-contain rounded-xl"
+                      src={mood2}
+                      alt="Journaling"
+                    />
+                    <p className="text-center text-gray-700">
+                      Write freely and get personalized prompts to reflect better.
+                    </p>
+                  </div>
+                </Card>
+                <Card>
+                  <div className="flex flex-col items-center justify-around p-10 gap-4">
+                    <h3 className="text-2xl font-bold text-green-700">
+                      🛠️ Mind Tools
+                    </h3>
+                    <img
+                      className="w-60 h-60 object-contain rounded-xl"
+                      src={mood3}
+                      alt="Mind Tools"
+                    />
+                    <p className="text-center text-gray-700">
+                      Practice mindfulness with quick, helpful tools built into the app.
+                    </p>
+                  </div>
+                </Card>
+              </CardSwap>
+            </div>
           </div>
         </div>
       </section>

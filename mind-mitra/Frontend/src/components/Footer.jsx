@@ -1,17 +1,18 @@
 import { Mail, Github, Linkedin } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className="bg-green-700  text-white py-10 px-6 sm:px-12 ">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="max-w-7xl mx-20 grid grid-cols-1  md:grid-cols-2 gap-10">
         
         <div>
           <h3 className="text-xl font-bold mb-4">MindMitra</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:underline">Home</a></li>
-            <li><a href="#mood-tracker" className="hover:underline">Mood Tracker</a></li>
-            <li><a href="#journal" className="hover:underline">Journal</a></li>
-            <li><a href="#mind-tools" className="hover:underline">Mind Tools</a></li>
+            <li><NavLink to="/" className="hover:underline">Home</NavLink></li>
+            <li><NavLink to="/mood-track" className="hover:underline">Mood Tracker</NavLink></li>
+            <li><NavLink to="/journal" className="hover:underline">Journal</NavLink></li>
+            <li><NavLink to="/mind-tools" className="hover:underline">Mind Tools</NavLink></li>
           </ul>
         </div>
 
