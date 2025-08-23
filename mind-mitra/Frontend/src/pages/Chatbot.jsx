@@ -14,7 +14,7 @@ export default function Chatbot() {
     "phobia","obsessive","compulsive","ocd","adhd","autism","mental illness","diagnosis","medication",
     "psychiatrist","psychologist","psychotherapy","mindfulness","meditation","relaxation","breathe","calm",
     "cope","coping","distress","emotional","regulation","anger management","crisis","hotline","helpline",
-    "wellness","mental","health","disturbed","paranoia","delusion","hallucination"
+    "wellness","mental","health","disturbed","paranoia","delusion","hallucination", "drained", "exhausted"
   ];
 
   const containsMentalHealthKeywords = (text) => {
