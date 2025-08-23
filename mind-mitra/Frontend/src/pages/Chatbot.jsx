@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 export default function Chatbot() {
-  console.log("Gemini Key:", import.meta.env.VITE_GEMINI_KEY);
 
   const mentalHealthKeywords = [
     "anxiety","depression","stress","mental health","therapy","sad","angry","panic","help","support","anxious","fine",
@@ -80,7 +79,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="flex flex-col pt-30 max-w-lg mx-auto p-4 bg-white rounded-lg shadow h-[80vh]">
+    <div className="flex flex-col pt-30 min-w-screen mx-auto p-4 bg-white rounded-lg shadow h-[80vh]">
       <div className="flex-1 overflow-y-auto mb-4 space-y-2">
         {messages.map((msg, idx) => (
           <div
@@ -91,10 +90,11 @@ export default function Chatbot() {
                 : "bg-gray-100 mr-auto text-left"
             }`}
           >
+            <div ref={messageRef}></div>
             <ReactMarkdown>{msg.text}</ReactMarkdown>
           </div>
         ))}
-                <div ref={messageRef}></div>
+                
 
         {loading && <div className="text-gray-500">Bot is typing...</div>}
       </div>
