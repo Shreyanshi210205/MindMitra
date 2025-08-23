@@ -151,7 +151,7 @@ function Home() {
       <section className="py-30 px-6 sm:px-12 bg-pink-100 overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Only show feature text on large screens */}
-          <div className="space-y-8 lg:block hidden">
+          <div className="space-y-8 lg:block ">
             <h1
               data-aos="fade-up"
               className="text-5xl font-bold text-green-700"
