@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
-import admin from '../firebase.js'; // your configured Firebase Admin instance
-
+import admin from '../firebase.js'; 
 export const authenticate = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -10,14 +9,14 @@ export const authenticate = async (req, res, next) => {
 
   const token = authHeader.split(' ')[1];
 
-  // Try verifying Firebase token first
+  //Verifying Firebase token first
   try {
     const decodedFirebase = await admin.auth().verifyIdToken(token);
     req.userId = decodedFirebase.uid;
     req.userEmail = decodedFirebase.email;
     return next();
   } catch (firebaseError) {
-    // If Firebase verification fails, try custom JWT
+    // If Firebase verification fails, custom JWT
     try {
       const decodedJWT = jwt.verify(token, process.env.JWT_KEY);
       req.userId = decodedJWT.userId;

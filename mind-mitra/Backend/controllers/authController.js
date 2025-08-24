@@ -52,7 +52,7 @@ export const google=async(req,res)=>{
       name: decodedToken.name,
     });
   } catch (err) {
-    console.error('Token verification failed:', err);
+    // console.error('Token verification failed:', err);
     res.status(401).json({ error: 'Unauthorized' });
   }
 }

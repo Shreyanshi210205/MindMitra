@@ -101,7 +101,7 @@ const moods = allMoods.filter(entry => {
 
     res.json({ weekMood: moodMap });
   } catch (error) {
-    console.error("Error in getWeekMood:", error);
+    // console.error("Error in getWeekMood:", error);
     res.status(500).json({ error: 'Server error' });
   }
 };
@@ -166,7 +166,7 @@ export const getJournalDays=async(req,res)=>{
     });
 
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     res.status(500).json({ message: 'Server error' });
   }
 };

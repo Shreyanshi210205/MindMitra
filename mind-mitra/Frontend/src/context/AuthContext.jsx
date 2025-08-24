@@ -31,7 +31,7 @@ export const AuthProvider = (props) => {
             const data = await res.json();
             setUser(firebaseUser);
             setGoogleLoggedin(true);
-            console.log(" Firebase user logged in:", data);
+            // console.log(" Firebase user logged in:", data);
           } catch (err) {
             console.error("Firebase auth error:", err);
           }
@@ -58,7 +58,7 @@ export const AuthProvider = (props) => {
         const data = await res.json();
         setUser(data); 
         setLoggedIn(true);
-        console.log("Manual user logged in:", data);
+        // console.log("Manual user logged in:", data);
       } catch (err) {
         console.error("Manual auth error:", err);
       }

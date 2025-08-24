@@ -22,7 +22,7 @@ export const getArticles=async(req,res)=>{
     res.json(articles);
     }
     catch(err){
-        console.error('Failed to fetch the rss feed',err);
+        // console.error('Failed to fetch the rss feed',err);
         res.status(500).json({err:'Failed to fetch articles'})
     }
 
